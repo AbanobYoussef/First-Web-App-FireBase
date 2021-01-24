@@ -34,7 +34,6 @@ function renderCafa(doc) { // as a for loop
 
 
 form.addEventListener('submit', (e) => {
-    e.preventDefault();
     if (form.name.value != '' && form.city.value != '') {
         db.collection('Cafa').add({
             Name: form.name.value,
@@ -44,7 +43,6 @@ form.addEventListener('submit', (e) => {
         form.city.value = '';
     }
 });
-<<<<<<< HEAD
 
 
 //real time listener
@@ -61,5 +59,3 @@ db.collection('Cafa').onSnapshot(snapshot => {
     });
 
 });
-=======
->>>>>>> 30fa36e95fff73548d808cddd6b291454a2d0379
