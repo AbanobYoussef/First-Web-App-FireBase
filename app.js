@@ -21,7 +21,6 @@ function renderCafa(doc) { // as a for loop
 
     // deleting data
     cross.addEventListener('click', (e) => {
-        e.stopPropagation();
         let id = e.target.parentElement.getAttribute('data-id');
         db.collection('Cafa').doc(id).delete();
         cafeList.innerHTML = '';
