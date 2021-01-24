@@ -35,6 +35,7 @@ function renderCafa(doc) { // as a for loop
 
 
 form.addEventListener('submit', (e) => {
+    e.preventDefault();
     if (form.name.value != '' && form.city.value != '') {
         db.collection('Cafa').add({
             Name: form.name.value,
