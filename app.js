@@ -24,19 +24,14 @@ function renderCafa(doc) { // as a for loop
         e.stopPropagation();
         let id = e.target.parentElement.getAttribute('data-id');
         db.collection('Cafa').doc(id).delete();
-        cafeList.innerHTML = '';
-        Load();
     });
 }
 
-function Load() {
-    db.collection('Cafa').get().then(snapshot => {
-        snapshot.docs.forEach(doc => {
-            renderCafa(doc);
-        });
+/*db.collection('Cafa').get().then(snapshot => {
+    snapshot.docs.forEach(doc => {
+        renderCafa(doc);
     });
-}
-Load();
+});*/
 
 
 form.addEventListener('submit', (e) => {
@@ -48,7 +43,21 @@ form.addEventListener('submit', (e) => {
         });
         form.name.value = '';
         form.city.value = '';
-        cafeList.innerHTML = '';
-        Load();
     }
+});
+
+
+//real time listener
+
+db.collection('Cafa').onSnapshot(snapshot => {
+    let changes = snapshot.docChanges();
+    changes.forEach(change => {
+        if (change.type == 'added') {
+            renderCafa(change.doc);
+        } else if (change.type == 'removed') {
+            let li = cafeList.querySelector('[data-id=' + change.doc.id + ']');
+            cafeList.removeChild(li);
+        }
+    });
+
 });
