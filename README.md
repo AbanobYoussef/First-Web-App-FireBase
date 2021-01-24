@@ -1,5 +1,3 @@
-# firebase-firestore-playlist
-All course files for the Firebase Firestore playlist on The Net Ninja YouTube channel. 
-
-Make sure you select the correct branch to see the files :)
 # First-Web-App-FireBase
+
+It's not complex it just a first try to work with FireBase-Web
